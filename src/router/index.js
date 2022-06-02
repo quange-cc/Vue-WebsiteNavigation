@@ -7,7 +7,6 @@ import NavAdmin from "@/components/admin/NavAdmin";
 import WebSiteManage from "@/components/admin/pages/WebSiteManage";
 import NavAdminHome from "@/components/admin/NavAdminHome";
 import SortManage from "@/components/admin/pages/SortManage";
-import Test123 from "@/components/Test-123";
 Vue.use(VueRouter)
 
 const routes = [
@@ -42,11 +41,6 @@ const routes = [
                 name: 'sortManage',
                 component: SortManage
             },
-            {
-                path: 'test-1',
-                name: 'test',
-                component: Test123
-            }
         ]
     }
 
