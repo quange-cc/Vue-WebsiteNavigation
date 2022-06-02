@@ -5,6 +5,7 @@
         mode="horizontal"
         background-color="#545c64"
         text-color="#fff"
+        :router="true"
         active-text-color="#ffd04b">
 
       <el-menu-item @click="openSidebar">
@@ -12,7 +13,7 @@
         <i class="el-icon-s-unfold" v-show="isCollapse"></i>
       </el-menu-item>
 
-      <el-menu-item index="1">首页</el-menu-item>
+      <el-menu-item index="/">首页</el-menu-item>
 
       <el-submenu index="2">
         <template slot="title">我的工作台</template>
@@ -27,9 +28,8 @@
 
       <el-submenu index="99" style="float: right;" v-show="loginStatus">
         <template slot="title">admin</template>
-        <el-menu-item index="99-1">控制面板</el-menu-item>
+        <el-menu-item :index="{name:'adminHome'}" >控制面板</el-menu-item>
         <el-menu-item index="99-2" @click="quitLogin">退出登录</el-menu-item>
-        <router-link to="/admin/home">后台</router-link>
       </el-submenu>
 
     </el-menu>
