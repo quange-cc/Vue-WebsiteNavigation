@@ -1,9 +1,9 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
-import NavLogin from "@/components/pages/NavLogin";
-import NavHome from "@/components/home/NavHome";
-import NavAdmin from "@/components/admin/NavAdmin";
+import NavLogin from "@/components/home/pages/NavLogin";
+import NavHome from "@/components/pages/NavHome";
+import NavAdmin from "@/components/pages/NavAdmin";
 import WebSiteManage from "@/components/admin/pages/WebSiteManage";
 import NavAdminHome from "@/components/admin/NavAdminHome";
 import SortManage from "@/components/admin/pages/SortManage";

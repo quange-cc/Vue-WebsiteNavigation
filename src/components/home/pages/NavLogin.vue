@@ -1,7 +1,7 @@
 <template>
 
   <el-dialog
-      title="用户登录"
+      title="管理员登录"
       :visible.sync="loginFormVisible"
       width="20%"
       :before-close="closeLogin"
@@ -85,7 +85,7 @@ export default {
       this.$refs[val].validate((valid) => {
         if (valid) {
           // 提交数据
-          this.axios.post('http://127.0.0.1:8081/api/login', this.loginForm).then(resp => {
+          this.axios.post('api/login', this.loginForm).then(resp => {
             // 判断返回的状态码，1001 登录成功
             if (resp.data.code === 1001) {
               // 弹出登录成功提示

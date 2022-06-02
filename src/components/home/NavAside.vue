@@ -1,5 +1,5 @@
 <template>
-  <el-aside style="line-height: 100vh" :width="isCollapse ? '70px':'200px'">
+  <el-aside style="line-height: 100vh" :width="isCollapse ? '65px':'200px'">
 
     <el-menu
         class="el-menu-vertical-demo"

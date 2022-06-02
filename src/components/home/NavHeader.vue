@@ -42,7 +42,7 @@
 
 <script>
 import {mapMutations, mapState} from "vuex";
-import NavLogin from "@/components/pages/NavLogin";
+import NavLogin from "@/components/home/pages/NavLogin";
 
 export default {
   name: "NavHeader",

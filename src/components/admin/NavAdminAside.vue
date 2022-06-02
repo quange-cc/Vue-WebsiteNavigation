@@ -1,5 +1,5 @@
 <template>
-  <el-aside style="line-height: 100vh" :width="isCollapse ? '70px':'200px'">
+  <el-aside style="line-height: 100vh" :width="isCollapse ? '65px':'200px'">
 
     <el-menu
         :default-active="$route.path"
@@ -10,7 +10,7 @@
         :router="true"
         :collapse="isCollapse">
 
-      <el-submenu>
+      <el-submenu index="1">
         <template slot="title">
           <i class="el-icon-location"></i>
           <span slot="title">信息管理</span>
@@ -24,7 +24,7 @@
         <span slot="title">导航二</span>
       </el-menu-item>
 
-      <el-menu-item index="4">
+      <el-menu-item index="3">
         <i class="el-icon-setting"></i>
         <span slot="title">导航四</span>
       </el-menu-item>
