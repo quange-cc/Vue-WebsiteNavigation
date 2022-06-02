@@ -6,6 +6,12 @@
         background-color="#545c64"
         text-color="#fff"
         active-text-color="#ffd04b">
+
+      <el-menu-item @click="openSidebar">
+        <i class="el-icon-s-fold" v-show="!isCollapse"></i>
+        <i class="el-icon-s-unfold" v-show="isCollapse"></i>
+      </el-menu-item>
+
       <el-menu-item index="1">首页</el-menu-item>
 
       <el-submenu index="2">
@@ -45,10 +51,18 @@ export default {
     this.vaLiDataToken()
   },
   computed: {
-    ...mapState('loginData', ['loginStatus'])
+    ...mapState('loginData', ['loginStatus']),
+    ...mapState('webSites', ['isCollapse'])
   },
   methods: {
-    ...mapMutations('loginData', {openLogin: 'OPEN-LOGIN', quitLogin:'QUIT-LOGIN',vaLiDataToken:'VALIDATE-TOKEN'})
+    ...mapMutations('loginData', {
+      openLogin: 'OPEN-LOGIN',
+      quitLogin: 'QUIT-LOGIN',
+      vaLiDataToken: 'VALIDATE-TOKEN'
+    }),
+    ...mapMutations('webSites', {
+      openSidebar: 'switch-sidebar'
+    })
   }
 };
 </script>

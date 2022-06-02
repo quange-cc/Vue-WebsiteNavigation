@@ -1,8 +1,6 @@
 <template>
   <el-footer>
-
-    Footer
-
+    底部展示
   </el-footer>
 </template>
 
@@ -13,5 +11,10 @@ export default {
 </script>
 
 <style scoped>
-
+.el-footer {
+  background-color: #B3C0D1;
+  color: #333;
+  text-align: center;
+  line-height: 60px;
+}
 </style>

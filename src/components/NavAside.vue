@@ -1,12 +1,13 @@
 <template>
-  <el-aside style="line-height: 100vh; width: 200px">
+  <el-aside style="line-height: 100vh" :width="isCollapse ? '70px':'200px'">
+
     <el-menu
-        default-active="2"
         class="el-menu-vertical-demo"
         background-color="#545c64"
         text-color="#fff"
-        active-text-color="#ffd04b">
-
+        :collapse-transition="false"
+        active-text-color="#ffd04b"
+        :collapse="isCollapse">
       <template v-for="(val, key, index) in webSiteData">
         <el-submenu :index="`${index + 1}`" :key="key">
           <template slot="title">
@@ -20,18 +21,6 @@
           </el-menu-item-group>
         </el-submenu>
       </template>
-
-
-      <el-submenu index="3">
-        <template slot="title">
-          <i class="el-icon-setting"></i>
-          <span>导航er</span>
-        </template>
-        <el-menu-item-group>
-          <el-menu-item index="2-1">选项1</el-menu-item>
-          <el-menu-item index="2-2">选项2</el-menu-item>
-        </el-menu-item-group>
-      </el-submenu>
 
 
       <el-menu-item index="4">
@@ -49,10 +38,9 @@ import {mapState} from "vuex";
 
 export default {
   name: "NavAside",
-  methods: {
-  },
+  methods: {},
   computed: {
-    ...mapState('webSites', ['webSiteData'])
+    ...mapState('webSites', ['webSiteData', 'isCollapse'])
   }
 }
 </script>

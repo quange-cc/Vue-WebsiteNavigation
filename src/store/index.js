@@ -11,6 +11,7 @@ const webSites = {
     // 准备state对象-保存具体数据
     state: {
         webSiteData: [],
+        isCollapse:false
     },
 
     // 修改state中的数据
@@ -21,6 +22,10 @@ const webSites = {
                     state.webSiteData = resp.data.data;
                 }
             });
+        },
+        // 边栏收起打开
+        'switch-sidebar'(state) {
+            state.isCollapse = !state.isCollapse;
         }
     },
 
