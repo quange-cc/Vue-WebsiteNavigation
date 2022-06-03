@@ -1,12 +1,9 @@
 <template>
   <el-header style="padding: 0">
     <el-menu
-        class="el-menu-demo"
+        class="el-menu-vertical-demo"
         mode="horizontal"
-        background-color="#545c64"
-        text-color="#fff"
-        :router="true"
-        active-text-color="#ffd04b">
+        :router="true">
 
       <el-menu-item @click="openSidebar">
         <i class="el-icon-s-fold" v-show="!isCollapse"></i>

@@ -7,6 +7,7 @@ import NavAdmin from "@/components/pages/NavAdmin";
 import WebSiteManage from "@/components/admin/pages/WebSiteManage";
 import NavAdminHome from "@/components/admin/NavAdminHome";
 import SortManage from "@/components/admin/pages/SortManage";
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -14,6 +15,11 @@ const routes = [
         path: '/',
         name: 'home',
         component: NavHome
+    },
+    {
+        path: '/error',
+        name: 'Page-404',
+        component: () => import('@/view/error/Page404')
     },
     {
         path: '/login',

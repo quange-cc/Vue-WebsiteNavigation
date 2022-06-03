@@ -1,7 +1,7 @@
 <template>
   <el-main>
     <el-row type="flex" justify="center">
-      <el-col :span="10">
+      <el-col :span="8">
         <div style="margin-top: 15px;">
           <el-input
               placeholder="请输入搜索内容"
@@ -14,7 +14,7 @@
       </el-col>
     </el-row>
     <el-row type="flex" justify="center">
-      <el-col :span="10">
+      <el-col :span="8">
         <el-radio-group v-model="searchId" size="small" style="margin-top: 2px;">
           <el-radio-button label='1'>谷歌</el-radio-button>
           <el-radio-button label='2'>百度</el-radio-button>
@@ -27,7 +27,7 @@
 
     <template v-for="v in webSiteData">
       <el-row :gutter="20" type="left" v-for="(val) in v" :key="val.name">
-        <h3 style="margin-top: 10px;margin-left: 20px">{{ val.name }}</h3>
+        <h4>{{ val.name }}</h4>
         <el-col :span="5" v-for="val1 in val.sites" :key="val1.title">
           <!--            <div class="grid-content bg-purple" @click="openUrl(val1.url)" slot="reference"></div>-->
           <el-tooltip
@@ -36,16 +36,18 @@
               :content="val1.description"
               placement="bottom">
             <el-card class="box-card" shadow="hover" @click.native="openUrl(val1.url)">
-              <el-avatar
-                  shape="circle"
-                  :size="40"
-                  fit="cover"
-                  style="float: left"
-                  :alt="val1.title"
-                  :src="`http://127.0.0.1:8081/ico/${val1.icon}`">
-              </el-avatar>
+              <div class="img-card">
+                <el-avatar
+                    shape="circle"
+                    :size="40"
+                    fit="cover"
+                    :alt="val1.title"
+                    :src="`http://127.0.0.1:8081/ico/${val1.icon}`">
+                </el-avatar>
+              </div>
+
               <div class="comment">
-                <b>{{ val1.title }}</b>
+                <strong>{{ val1.title }}</strong>
                 <p>{{ val1.description }}</p>
               </div>
             </el-card>
@@ -107,9 +109,23 @@ export default {
 
 <style scoped>
 
+h4{
+  margin-top: 10px;
+  margin-left: 20px
+}
+
+strong{
+  font-size: 14px;
+}
+
+.img-card{
+  float: left;
+  padding: 10px 0
+}
 
 .comment {
   margin-left: 60px;
+  margin-top: 6px;
 }
 
 .comment p {
@@ -117,6 +133,7 @@ export default {
   text-overflow: ellipsis;
   overflow: hidden;
   color: #979898;
+  font-size: 11px;
 }
 
 
