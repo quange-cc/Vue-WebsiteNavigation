@@ -189,6 +189,7 @@ const loginData = {
             cookies.remove('token')
 
         },
+
         //验证token
         'VALIDATE-TOKEN'(state) {
             //验证是否存在token
@@ -237,5 +238,14 @@ export default new Vuex.Store({
         loginData,
         adminWebSites,
         layoutData
+    },
+
+    state:{
+        metaInfo:{}
+    },
+    mutations:{
+        CHANGE_META_INFO(state,metaInfo){
+            state.metaInfo = metaInfo;
+        }
     }
 })

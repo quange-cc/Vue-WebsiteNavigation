@@ -14,12 +14,26 @@ const routes = [
     {
         path: '/',
         name: 'home',
-        component: NavHome
+        component: NavHome,
+        meta: {
+            metaInfo: {
+                title: '网址导航',
+                keywords: '导航',
+                description: '最全的导航'
+            }
+        }
     },
     {
-        path: '/error',
+        path: '*',
         name: 'Page-404',
-        component: () => import('@/view/error/Page404')
+        component: () => import('@/view/error/Page404'),
+        meta: {
+            metaInfo: {
+                title: '404-页面未找到',
+                keywords: '导航',
+                description: '最全的导航'
+            }
+        }
     },
     {
         path: '/login',
@@ -31,21 +45,33 @@ const routes = [
         name: 'admin',
         component: NavAdmin,
         // 配置子级路由
+        meta: {
+            isAuth: true
+        },
         children: [
             {
                 path: 'home',
                 name: 'adminHome',
-                component: NavAdminHome
+                component: NavAdminHome,
+                meta: {
+                    isAuth: true
+                }
             },
             {
                 path: 'website-manage',
                 name: 'wsm',
-                component: WebSiteManage
+                component: WebSiteManage,
+                meta: {
+                    isAuth: true
+                }
             },
             {
                 path: 'sort-manage',
                 name: 'sortManage',
-                component: SortManage
+                component: SortManage,
+                meta: {
+                    isAuth: true
+                }
             },
         ]
     }

@@ -1,6 +1,8 @@
 <template>
   <el-footer>
-    底部展示
+      <p>© 2016-2022 &nbsp;
+      <a href="https://www.quange.cc/">泉哥博客</a>
+      </p>
   </el-footer>
 </template>
 
@@ -12,9 +14,8 @@ export default {
 
 <style scoped>
 .el-footer {
-  background-color: #B3C0D1;
+  background-color: #eaeff8;
   color: #333;
   text-align: center;
-  line-height: 60px;
 }
 </style>
