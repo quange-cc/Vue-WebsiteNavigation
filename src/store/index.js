@@ -41,6 +41,7 @@ const adminWebSites = {
         addWebSiteFormVisible: false,
         editWebSiteFormVisible: false,
         webSitesData: [],
+        count: 0,
         editFormData: {},
         sortData: {},
         parentData: {}
@@ -71,10 +72,11 @@ const adminWebSites = {
 
     actions: {
         // 获取网址信息
-        'GET-WEB-SITES-DATA'(context) {
-            Vue.axios.get('api/getAllData?page=1&limit=10').then(resp => {
+        'GET-WEB-SITES-DATA'(context, data) {
+            Vue.axios.get(`api/getAllData?page=${data.page}&limit=${data.size}`).then(resp => {
                 if (resp.data.code === 2004) {
                     context.state.webSitesData = resp.data.data;
+                    context.state.count = resp.data.count;
                 }
             });
         },
@@ -156,37 +158,6 @@ const adminWebSites = {
     },
 }
 
-//登录数据
-const loginData = {
-    // 开启命名空间
-    namespaced: true,
-    // 准备state对象-保存具体数据
-    state: {
-
-    },
-
-    // 修改state中的数据
-    mutations: {
-        //验证token
-        // 'VALIDATE-TOKEN'(state) {
-        //     //验证是否存在token
-        //     if (cookies.isKey('token')) {
-        //         // 获取token
-        //         const token = cookies.get('token')
-        //         // 验证token是否有效
-        //         Vue.axios.get("/api/sites/validateToken?token=" + token).then(resp => {
-        //             if (resp.data.code === 7000) {
-        //                 state.loginStatus = true;
-        //             }
-        //         });
-        //     } else {
-        //         state.loginStatus = false;
-        //     }
-        //
-        // }
-    }
-
-}
 
 // 后台布局数据
 const layoutData = {
@@ -210,7 +181,6 @@ const layoutData = {
 export default new Vuex.Store({
     modules: {
         webSites,
-        loginData,
         adminWebSites,
         layoutData
     },

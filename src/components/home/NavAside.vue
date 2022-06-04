@@ -1,5 +1,5 @@
 <template>
-  <el-aside style="line-height: 100vh" :width="isCollapse ? '65px':'200px'">
+  <el-aside  :width="isCollapse ? '65px':'200px'">
 
     <el-menu
         class="el-menu-vertical-demo"
@@ -13,8 +13,8 @@
         <h3>网址导航</h3>
       </el-menu-item>
 
-      <template v-for="(val, key, index) in webSiteData">
-        <el-submenu :index="`${index + 1}`" :key="key">
+      <template v-for="(val, key) in webSiteData">
+        <el-submenu :index="`${key}`" :key="key">
           <template slot="title">
             <i class="el-icon-location"></i>
             <span>{{ key }}</span>

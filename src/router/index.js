@@ -47,23 +47,11 @@ const routes = [
                 name: 'login',
                 component: NavLogin
             },
-            {
-                path: '404',
-                name: 'Page-404',
-                component: () => import('@/view/error/Page404'),
-                meta: {
-                    metaInfo: {
-                        title: '404-页面未找到',
-                        keywords: '导航',
-                        description: '最全的导航'
-                    }
-                }
-            }
+
         ]
     },
     {
         path: '/admin',
-        name: 'admin',
         component: NavAdmin,
         meta: {
             isAuth: true
@@ -71,7 +59,7 @@ const routes = [
         children: [
             {
                 path: '',
-                name: 'adminHome',
+                name: 'admin',
                 component: NavAdminHome,
                 meta: {
                     isAuth: true
@@ -94,6 +82,18 @@ const routes = [
                 }
             },
         ]
+    },
+    {
+        path: '*',
+        name: 'Page-404',
+        component: () => import('@/view/error/Page404'),
+        meta: {
+            metaInfo: {
+                title: '404-页面未找到',
+                keywords: '导航',
+                description: '最全的导航'
+            }
+        }
     }
 
 ]

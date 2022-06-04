@@ -1,5 +1,5 @@
 <template>
-  <el-header style="padding: 0">
+  <el-header>
 
     <el-menu
         class="el-menu-vertical-demo"

@@ -28,5 +28,16 @@ export default {
 </script>
 
 <style scoped>
+.el-header {
+  padding: 0;
+}
 
+.el-main {
+  height: calc(100vh - 120px);
+  overflow-y: auto;
+}
+
+.el-aside {
+  line-height: 100vh;
+}
 </style>

@@ -30,7 +30,15 @@ router.beforeEach((to, from, next) => {
     if (to.meta.isAuth) {
         // 判断是否存在token
         if (cookies.isKey('token')) {
-            next()
+            // 发送请求
+            axios.get('/api/validateToken').then(resp => {
+                if (resp.data.code === 7000) {
+                    // 放行
+                    next()
+                } else {
+                    next({path: '/',});
+                }
+            });
         } else {
             next({path: '/',});
         }
@@ -38,7 +46,6 @@ router.beforeEach((to, from, next) => {
     } else {
         next()
     }
-
 
 });
 

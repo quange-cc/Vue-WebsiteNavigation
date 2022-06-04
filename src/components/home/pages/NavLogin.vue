@@ -43,8 +43,6 @@
 </template>
 
 <script>
-import {mapState, mapMutations} from "vuex";
-
 export default {
   name: "NavLogin",
 
@@ -80,14 +78,11 @@ export default {
 
   },
   computed: {
-    ...mapState('loginData', ['loginFormVisible'])
+
   },
   methods: {
-    ...mapMutations('loginData', {closeLogin: 'CLOSE-LOGIN', successLogin: 'SUCCESS-LOGIN'}),
-
     // 登录按钮
     loginSubmit(val) {
-
       this.$refs[val].validate((valid) => {
         if (valid) {
           // 提交数据
@@ -98,12 +93,8 @@ export default {
               this.$message.success('登录成功')
               // 设置cookies-token
               this.$cookies.set('token', resp.data.data, 60 * 60, "/", "", true, "None")
-              // 设置登录成功状态
-              this.successLogin();
-              // 关闭登录界面
-              this.closeLogin();
               // 跳到后台
-              this.$router.push('/admin/home')
+              this.$router.push('/admin')
             } else {
               // 登录失败
               this.$message.error('用户名或密码错误')

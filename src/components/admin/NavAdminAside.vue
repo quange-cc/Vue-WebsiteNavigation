@@ -1,5 +1,5 @@
 <template>
-  <el-aside style="line-height: 100vh" :width="isCollapse ? '65px':'200px'">
+  <el-aside  :width="isCollapse ? '65px':'200px'">
 
     <el-menu
         :default-active="$route.path"
