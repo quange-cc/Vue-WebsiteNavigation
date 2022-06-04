@@ -36,17 +36,17 @@
 
           <el-tooltip
               class="item"
-              effect="dark"
-              :content="val1.description"
-              placement="bottom">
-            <el-card class="box-card" shadow="hover" @click.native="openUrl(val1.url)">
+              effect="dark">
+            <div slot="content" class="tooltip">{{ val1.description }}</div>
+            <el-card class="box-card" @click.native="openUrl(val1.url)">
               <div class="img-card">
                 <el-avatar
                     shape="circle"
                     :size="40"
                     fit="fill"
                     :alt="val1.title"
-                    :src="`data:image/png;base64,${val1.icon}`">
+                    :src="`data:image/png;base64,${val1.icon}`"
+                >
                 </el-avatar>
               </div>
               <div class="comment">
@@ -59,7 +59,7 @@
       </el-row>
     </template>
 
-    <el-backtop target=".el-main" bottom="100"></el-backtop>
+    <el-backtop target=".el-main" :bottom="100"></el-backtop>
   </el-main>
 </template>
 
@@ -84,7 +84,6 @@ export default {
   },
   methods: {
     ...mapMutations('webSites', {getWebsites: 'GET-SITES'}),
-
     // 打开url
     openUrl(url) {
       window.open(url)
@@ -145,5 +144,21 @@ strong {
   padding: 10px;
 }
 
+.box-card:hover {
+  transform: translateY(-6px);
+  -webkit-transform: translateY(-6px);
+  -moz-transform: translateY(-6px);
+  box-shadow: 0 26px 40px -24px rgba(0, 36, 100, 0.3);
+  -webkit-box-shadow: 0 26px 40px -24px #abd0eb;
+  -moz-box-shadow: 0 26px 40px -24px rgba(0, 36, 100, 0.3);
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+.tooltip{
+  width: 200px;
+}
 
 </style>

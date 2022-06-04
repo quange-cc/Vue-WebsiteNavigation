@@ -10,8 +10,6 @@ import 'element-ui/lib/theme-chalk/index.css';
 // 引入axios
 import axios from "axios";
 import VueAxios from "vue-axios";
-import cookies from "vue-cookies";
-
 
 // 设置axios 请求允许携带cookies
 axios.defaults.withCredentials = true;
@@ -28,17 +26,9 @@ Vue.use(Meta)
 router.beforeEach((to, from, next) => {
     // 通过 requiresAuth 判断当前路由是否需要登录
     if (to.meta.isAuth) {
-        // 判断是否存在token
-        if (cookies.isKey('token')) {
-            // 发送请求
-            axios.get('/api/validateToken').then(resp => {
-                if (resp.data.code === 7000) {
-                    // 放行
-                    next()
-                } else {
-                    next({path: '/',});
-                }
-            });
+        if (store.state.isToken.loginStatus) {
+            // 放行
+            next()
         } else {
             next({path: '/',});
         }

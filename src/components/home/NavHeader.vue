@@ -17,8 +17,12 @@
         首页
       </el-menu-item>
 
-      <el-menu-item index="login" style="float: right">
+      <el-menu-item index="login" style="float: right" v-show="!loginStatus">
         登录
+      </el-menu-item>
+
+      <el-menu-item index="/admin" style="float: right" v-show="loginStatus">
+        后台管理
       </el-menu-item>
 
     </el-menu>
@@ -36,7 +40,8 @@ export default {
   mounted() {
   },
   computed: {
-    ...mapState('webSites', ['isCollapse'])
+    ...mapState('webSites', ['isCollapse']),
+    ...mapState('isToken', ['loginStatus'])
   },
   methods: {
     ...mapMutations('webSites', {

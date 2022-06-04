@@ -158,7 +158,6 @@ const adminWebSites = {
     },
 }
 
-
 // 后台布局数据
 const layoutData = {
     // 开启命名空间
@@ -178,11 +177,43 @@ const layoutData = {
     }
 }
 
+// 校验token
+const isToken = {
+    // 开启命名空间
+    namespaced: true,
+
+    state: {
+        loginStatus: false,
+    },
+    mutations: {
+        'CHANGE-LOGIN-STATUS'(state, status) {
+            state.loginStatus = status;
+        }
+    },
+    actions: {
+        'VERIFY-LOGIN-STATUS'(context) {
+            // 判断token是否存在,发送请求对token进行验证是否有效
+            if (Vue.$cookies.isKey('token')) {
+                Vue.axios.get('/api/validateToken').then(resp => {
+                    if (resp.data.code === 7000) {
+                        context.commit('CHANGE-LOGIN-STATUS', true)
+                    } else {
+                        context.commit('CHANGE-LOGIN-STATUS', false)
+                    }
+                });
+            } else {
+                context.commit('CHANGE-LOGIN-STATUS', false);
+            }
+        },
+    },
+}
+
 export default new Vuex.Store({
     modules: {
         webSites,
         adminWebSites,
-        layoutData
+        layoutData,
+        isToken,
     },
 
     state: {
@@ -191,6 +222,7 @@ export default new Vuex.Store({
     mutations: {
         CHANGE_META_INFO(state, metaInfo) {
             state.metaInfo = metaInfo;
-        }
-    }
-})
+        },
+    },
+
+});

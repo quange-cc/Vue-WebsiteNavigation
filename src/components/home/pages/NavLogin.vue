@@ -43,6 +43,8 @@
 </template>
 
 <script>
+import {mapMutations} from "vuex";
+
 export default {
   name: "NavLogin",
 
@@ -77,10 +79,10 @@ export default {
     }
 
   },
-  computed: {
-
-  },
+  computed: {},
   methods: {
+    ...mapMutations('isToken', {changeStatus: 'CHANGE-LOGIN-STATUS'}),
+
     // 登录按钮
     loginSubmit(val) {
       this.$refs[val].validate((valid) => {
@@ -91,6 +93,7 @@ export default {
             if (resp.data.code === 1001) {
               // 弹出登录成功提示
               this.$message.success('登录成功')
+              this.changeStatus(true);
               // 设置cookies-token
               this.$cookies.set('token', resp.data.data, 60 * 60, "/", "", true, "None")
               // 跳到后台

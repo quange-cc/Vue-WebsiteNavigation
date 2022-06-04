@@ -10,13 +10,23 @@
 </template>
 
 <script>
+import {mapActions} from "vuex";
+
 import NavAside from "@/components/home/NavAside";
 import NavHeader from "@/components/home/NavHeader";
 import NavFooter from "@/components/home/NavFooter";
 
 export default {
   name: "NavHome",
-  components: {NavFooter, NavHeader, NavAside}
+  components: {NavFooter, NavHeader, NavAside},
+  mounted() {
+    this.verifyStatus();
+  },
+  methods: {
+    ...mapActions('isToken', {
+      verifyStatus: 'VERIFY-LOGIN-STATUS'
+    })
+  }
 }
 </script>
 
@@ -35,4 +45,5 @@ export default {
   /*line-height: 100vh;*/
   overflow: hidden;
 }
+
 </style>
