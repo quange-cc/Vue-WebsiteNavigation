@@ -19,7 +19,7 @@ const routes = [
         component: NavHome,
         children: [
             {
-                path: '/',
+                path: '',
                 name: 'home',
                 component: NavMain,
                 meta: {
@@ -31,7 +31,7 @@ const routes = [
                 }
             },
             {
-                path: '/about',
+                path: 'about',
                 name: 'about',
                 component: NavAbout,
                 meta: {
@@ -43,12 +43,12 @@ const routes = [
                 }
             },
             {
-                path: '/login',
+                path: 'login',
                 name: 'login',
                 component: NavLogin
             },
             {
-                path: '*',
+                path: '404',
                 name: 'Page-404',
                 component: () => import('@/view/error/Page404'),
                 meta: {
@@ -62,21 +62,15 @@ const routes = [
         ]
     },
     {
-        path: '/login',
-        name: 'login',
-        component: NavLogin
-    },
-    {
         path: '/admin',
         name: 'admin',
         component: NavAdmin,
-        // 配置子级路由
         meta: {
             isAuth: true
         },
         children: [
             {
-                path: 'home',
+                path: '',
                 name: 'adminHome',
                 component: NavAdminHome,
                 meta: {
