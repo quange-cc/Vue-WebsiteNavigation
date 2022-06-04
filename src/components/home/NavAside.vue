@@ -1,5 +1,5 @@
 <template>
-  <el-aside  :width="isCollapse ? '65px':'200px'">
+  <el-aside :width="isCollapse ? '64px':'200px'">
 
     <el-menu
         class="el-menu-vertical-demo"
@@ -52,5 +52,6 @@ export default {
 <style scoped>
 .el-menu-vertical-demo {
   height: 100vh;
+  border-right: hidden;
 }
 </style>

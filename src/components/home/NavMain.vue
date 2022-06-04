@@ -1,6 +1,5 @@
 <template>
-  <el-main>
-
+  <el-main style="background-color: #979898">
     <el-row type="flex" justify="center">
       <el-col :span="6">
         <div style="margin-top: 15px;">
@@ -60,6 +59,7 @@
       </el-row>
     </template>
 
+    <el-backtop target=".el-main" bottom="100"></el-backtop>
   </el-main>
 </template>
 
