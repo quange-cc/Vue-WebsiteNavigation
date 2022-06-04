@@ -1,37 +1,44 @@
 <template>
 
-  <el-dialog
-      title="管理员登录"
-      :visible.sync="loginFormVisible"
-      width="20%"
-      :before-close="closeLogin"
-  >
-    <!--登录表单区域-->
-    <el-form
-        :model="loginForm"
-        :rules="rules"
-        ref="loginForm"
-        status-icon
-        class="demo-ruleForm"
-    >
-      <!-- 用户名-->
-      <el-form-item prop="username">
-        <el-input type="text" v-model="loginForm.username" prefix-icon="el-icon-user-solid"
-                  placeholder="请输入用户名"></el-input>
-      </el-form-item>
-      <!-- 密码-->
-      <el-form-item prop="passwd">
-        <el-input type="password" v-model="loginForm.passwd" prefix-icon="el-icon-search"
-                  placeholder="请输入密码"></el-input>
-      </el-form-item>
+  <el-row type="flex" justify="center" style="padding: 200px">
 
-      <el-form-item style="display: flex;justify-content: center">
-        <el-button type="primary" @click="loginSubmit('loginForm')">登录</el-button>
-        <el-button>注册</el-button>
-      </el-form-item>
-    </el-form>
+    <el-col :span="5">
+      <el-card class="box-card">
+        <div slot="header" class="clearfix">
+          <span>管理员登录</span>
+        </div>
+        <el-form
+            :model="loginForm"
+            :rules="rules"
+            ref="loginForm"
+            status-icon
+            class="demo-ruleForm"
+        >
+          <!-- 用户名-->
+          <el-form-item prop="username">
+            <el-input type="text" v-model="loginForm.username" prefix-icon="el-icon-user-solid"
+                      placeholder="请输入用户名"></el-input>
+          </el-form-item>
+          <!-- 密码-->
+          <el-form-item prop="passwd">
+            <el-input type="password" v-model="loginForm.passwd" prefix-icon="el-icon-search"
+                      placeholder="请输入密码"></el-input>
+          </el-form-item>
 
-  </el-dialog>
+          <el-form-item style="display: flex;justify-content: center">
+            <el-button type="primary" @click="loginSubmit('loginForm')">登录</el-button>
+            <el-button>注册</el-button>
+          </el-form-item>
+        </el-form>
+      </el-card>
+
+
+      <!--登录表单区域-->
+
+
+    </el-col>
+
+  </el-row>
 
 
 </template>
@@ -90,13 +97,14 @@ export default {
             if (resp.data.code === 1001) {
               // 弹出登录成功提示
               this.$message.success('登录成功')
-
               // 设置cookies-token
               this.$cookies.set('token', resp.data.data, 60 * 60, "/", "", true, "None")
               // 设置登录成功状态
               this.successLogin();
               // 关闭登录界面
               this.closeLogin();
+              // 跳到后台
+              this.$router.push('/admin/home')
             } else {
               // 登录失败
               this.$message.error('用户名或密码错误')

@@ -4,20 +4,20 @@ import cookies from 'vue-cookies'
 
 Vue.use(Vuex)
 
-// 首页网址数据
+// 首页数据
 const webSites = {
     // 开启命名空间
     namespaced: true,
     // 准备state对象-保存具体数据
     state: {
         webSiteData: [],
-        isCollapse:false
+        isCollapse: false
     },
 
     // 修改state中的数据
     mutations: {
         'GET-SITES'(state) {
-            Vue.axios.get("sites").then(resp => {
+            Vue.axios.get("api/sites").then(resp => {
                 if (resp.data.code === 2004) {
                     state.webSiteData = resp.data.data;
                 }
@@ -181,7 +181,8 @@ const loginData = {
         'SUCCESS-LOGIN'(state) {
             state.loginStatus = true;
         },
-        // 退出登录
+
+        // 退出登录清除cookie
         'QUIT-LOGIN'(state) {
             // 设置状态为假
             state.loginStatus = false;
@@ -240,11 +241,11 @@ export default new Vuex.Store({
         layoutData
     },
 
-    state:{
-        metaInfo:{}
+    state: {
+        metaInfo: {}
     },
-    mutations:{
-        CHANGE_META_INFO(state,metaInfo){
+    mutations: {
+        CHANGE_META_INFO(state, metaInfo) {
             state.metaInfo = metaInfo;
         }
     }

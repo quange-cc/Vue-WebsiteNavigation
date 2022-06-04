@@ -1,7 +1,8 @@
 <template>
   <el-main>
+
     <el-row type="flex" justify="center">
-      <el-col :span="8">
+      <el-col :span="6">
         <div style="margin-top: 15px;">
           <el-input
               placeholder="请输入搜索内容"
@@ -13,8 +14,9 @@
         </div>
       </el-col>
     </el-row>
+
     <el-row type="flex" justify="center">
-      <el-col :span="8">
+      <el-col :span="6">
         <el-radio-group v-model="searchId" size="small" style="margin-top: 2px;">
           <el-radio-button label='1'>谷歌</el-radio-button>
           <el-radio-button label='2'>百度</el-radio-button>
@@ -24,12 +26,15 @@
       </el-col>
     </el-row>
 
-
     <template v-for="v in webSiteData">
-      <el-row :gutter="20" type="left" v-for="(val) in v" :key="val.name">
+      <el-row
+          :gutter="20"
+          v-for="(val) in v"
+          :key="val.name"
+      >
         <h4>{{ val.name }}</h4>
-        <el-col :span="5" v-for="val1 in val.sites" :key="val1.title">
-          <!--            <div class="grid-content bg-purple" @click="openUrl(val1.url)" slot="reference"></div>-->
+        <el-col :span="4" v-for="val1 in val.sites" :key="val1.title" style="padding: 10px">
+
           <el-tooltip
               class="item"
               effect="dark"
@@ -40,12 +45,11 @@
                 <el-avatar
                     shape="circle"
                     :size="40"
-                    fit="cover"
+                    fit="fill"
                     :alt="val1.title"
-                    :src="`http://127.0.0.1:8081/ico/${val1.icon}`">
+                    :src="`data:image/png;base64,${val1.icon}`">
                 </el-avatar>
               </div>
-
               <div class="comment">
                 <strong>{{ val1.title }}</strong>
                 <p>{{ val1.description }}</p>
@@ -109,16 +113,16 @@ export default {
 
 <style scoped>
 
-h4{
+h4 {
   margin-top: 10px;
   margin-left: 20px
 }
 
-strong{
+strong {
   font-size: 14px;
 }
 
-.img-card{
+.img-card {
   float: left;
   padding: 10px 0
 }
