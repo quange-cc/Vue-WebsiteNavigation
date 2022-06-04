@@ -1,44 +1,43 @@
 <template>
 
-  <el-row type="flex" justify="center" style="padding: 200px">
+  <el-main>
+    <el-row type="flex" justify="center" style="padding: 200px">
 
-    <el-col :span="5">
-      <el-card class="box-card">
-        <div slot="header" class="clearfix">
-          <span>管理员登录</span>
-        </div>
-        <el-form
-            :model="loginForm"
-            :rules="rules"
-            ref="loginForm"
-            status-icon
-            class="demo-ruleForm"
-        >
-          <!-- 用户名-->
-          <el-form-item prop="username">
-            <el-input type="text" v-model="loginForm.username" prefix-icon="el-icon-user-solid"
-                      placeholder="请输入用户名"></el-input>
-          </el-form-item>
-          <!-- 密码-->
-          <el-form-item prop="passwd">
-            <el-input type="password" v-model="loginForm.passwd" prefix-icon="el-icon-search"
-                      placeholder="请输入密码"></el-input>
-          </el-form-item>
+      <el-col :span="5">
+        <el-card class="box-card">
+          <div slot="header" class="clearfix">
+            <span>管理员登录</span>
+          </div>
 
-          <el-form-item style="display: flex;justify-content: center">
-            <el-button type="primary" @click="loginSubmit('loginForm')">登录</el-button>
-            <el-button>注册</el-button>
-          </el-form-item>
-        </el-form>
-      </el-card>
+          <!--登录表单区域-->
+          <el-form
+              :model="loginForm"
+              :rules="rules"
+              ref="loginForm"
+              status-icon
+              class="demo-ruleForm"
+          >
+            <!-- 用户名-->
+            <el-form-item prop="username">
+              <el-input type="text" v-model="loginForm.username" prefix-icon="el-icon-user-solid"
+                        placeholder="请输入用户名"></el-input>
+            </el-form-item>
+            <!-- 密码-->
+            <el-form-item prop="passwd">
+              <el-input type="password" v-model="loginForm.passwd" prefix-icon="el-icon-search"
+                        placeholder="请输入密码"></el-input>
+            </el-form-item>
 
+            <el-form-item style="display: flex;justify-content: center">
+              <el-button type="primary" @click="loginSubmit('loginForm')">登录</el-button>
+              <el-button>注册</el-button>
+            </el-form-item>
+          </el-form>
+        </el-card>
 
-      <!--登录表单区域-->
-
-
-    </el-col>
-
-  </el-row>
+      </el-col>
+    </el-row>
+  </el-main>
 
 
 </template>

@@ -7,11 +7,15 @@
         :router="true"
     >
 
+
       <el-menu-item @click="openSidebar">
         <i class="el-icon-s-fold" v-show="!isCollapse"></i>
         <i class="el-icon-s-unfold" v-show="isCollapse"></i>
       </el-menu-item>
 
+      <el-menu-item index="/">
+        首页
+      </el-menu-item>
 
       <el-menu-item index="login" style="float: right">
         登录

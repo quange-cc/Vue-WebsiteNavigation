@@ -3,7 +3,7 @@
     <NavAside></NavAside>
     <el-container direction="vertical">
       <NavHeader></NavHeader>
-      <NavMain></NavMain>
+      <router-view></router-view>
       <NavFooter></NavFooter>
     </el-container>
   </el-container>
@@ -12,12 +12,11 @@
 <script>
 import NavAside from "@/components/home/NavAside";
 import NavHeader from "@/components/home/NavHeader";
-import NavMain from "@/components/home/NavMain";
 import NavFooter from "@/components/home/NavFooter";
 
 export default {
   name: "NavHome",
-  components: {NavFooter, NavHeader, NavAside, NavMain}
+  components: {NavFooter, NavHeader, NavAside}
 }
 </script>
 

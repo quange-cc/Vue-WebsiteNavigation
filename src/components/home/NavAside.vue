@@ -6,7 +6,6 @@
         background-color="#545c64"
         text-color="#fff"
         :collapse-transition="false"
-        active-text-color="#ffd04b"
         :collapse="isCollapse"
         :router="true"
     >
@@ -28,9 +27,9 @@
         </el-submenu>
       </template>
 
-      <el-menu-item index="/admin/home">
+      <el-menu-item index="/about">
         <i class="el-icon-setting"></i>
-        <span slot="title">导航er</span>
+        <span slot="title">关于</span>
       </el-menu-item>
 
     </el-menu>
