@@ -8,7 +8,11 @@
         :collapse-transition="false"
         active-text-color="#ffd04b"
         :collapse="isCollapse"
+        :router="true"
     >
+      <el-menu-item index="/">
+        <h3>网址导航</h3>
+      </el-menu-item>
 
       <template v-for="(val, key, index) in webSiteData">
         <el-submenu :index="`${index + 1}`" :key="key">
@@ -24,8 +28,7 @@
         </el-submenu>
       </template>
 
-
-      <el-menu-item index="42">
+      <el-menu-item index="/admin/home">
         <i class="el-icon-setting"></i>
         <span slot="title">导航er</span>
       </el-menu-item>

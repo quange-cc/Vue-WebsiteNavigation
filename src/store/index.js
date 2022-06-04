@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import cookies from 'vue-cookies'
 
 Vue.use(Vuex)
 
@@ -163,51 +162,28 @@ const loginData = {
     namespaced: true,
     // 准备state对象-保存具体数据
     state: {
-        loginFormVisible: false,
-        loginStatus: false,
+
     },
 
     // 修改state中的数据
     mutations: {
-        // 设置登录框状态属性
-        'OPEN-LOGIN'(state) {
-            state.loginFormVisible = true;
-        },
-        //关闭登录界面
-        'CLOSE-LOGIN'(state) {
-            state.loginFormVisible = false;
-        },
-        // 登录成功
-        'SUCCESS-LOGIN'(state) {
-            state.loginStatus = true;
-        },
-
-        // 退出登录清除cookie
-        'QUIT-LOGIN'(state) {
-            // 设置状态为假
-            state.loginStatus = false;
-            // 清除token
-            cookies.remove('token')
-
-        },
-
         //验证token
-        'VALIDATE-TOKEN'(state) {
-            //验证是否存在token
-            if (cookies.isKey('token')) {
-                // 获取token
-                const token = cookies.get('token')
-                // 验证token是否有效
-                Vue.axios.get("sites/validateToken?token=" + token).then(resp => {
-                    if (resp.data.code === 7000) {
-                        state.loginStatus = true;
-                    }
-                });
-            } else {
-                state.loginStatus = false;
-            }
-
-        }
+        // 'VALIDATE-TOKEN'(state) {
+        //     //验证是否存在token
+        //     if (cookies.isKey('token')) {
+        //         // 获取token
+        //         const token = cookies.get('token')
+        //         // 验证token是否有效
+        //         Vue.axios.get("/api/sites/validateToken?token=" + token).then(resp => {
+        //             if (resp.data.code === 7000) {
+        //                 state.loginStatus = true;
+        //             }
+        //         });
+        //     } else {
+        //         state.loginStatus = false;
+        //     }
+        //
+        // }
 
 
     }

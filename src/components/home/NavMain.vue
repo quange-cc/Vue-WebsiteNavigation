@@ -90,7 +90,6 @@ export default {
       window.open(url)
     },
     search(value) {
-
       switch (this.searchId) {
         case '1':
           window.open('https://www.google.com/search?q=' + value);
