@@ -10,18 +10,12 @@ const webSites = {
     // 准备state对象-保存具体数据
     state: {
         webSiteData: [],
+        asideData: [],
         isCollapse: false
     },
 
     // 修改state中的数据
     mutations: {
-        'GET-SITES'(state) {
-            Vue.axios.get("api/sites").then(resp => {
-                if (resp.data.code === 2004) {
-                    state.webSiteData = resp.data.data;
-                }
-            });
-        },
         // 边栏收起打开
         'switch-sidebar'(state) {
             state.isCollapse = !state.isCollapse;
@@ -29,7 +23,24 @@ const webSites = {
     },
 
     // 响应组件中用户的动作
-    actions: {},
+    actions: {
+        // 获取左侧导航栏 信息
+        'GET-aside-Data'(context) {
+            Vue.axios.get('/api/getAside').then(resp => {
+                if (resp.data.code === 2004) {
+                    context.state.asideData = resp.data.data;
+                }
+            });
+        },
+        // 获取首页数据
+        'GET-WEBSITE-DATA-BY-ID'(context, id) {
+            Vue.axios.get('/api/getWebSitesById?id=' + id).then(resp => {
+                if (resp.data.code === 2004) {
+                    context.state.webSiteData = resp.data.data;
+                }
+            });
+        }
+    },
 }
 
 // 网址信息管理

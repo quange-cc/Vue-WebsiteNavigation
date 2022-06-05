@@ -13,15 +13,15 @@
         <h3>网址导航</h3>
       </el-menu-item>
 
-      <template v-for="(val, key) in webSiteData">
-        <el-submenu :index="`${key}`" :key="key">
+      <template v-for="val in asideData">
+        <el-submenu :index="`${val.id}`" :key="val.id">
           <template slot="title">
             <i class="el-icon-location"></i>
-            <span>{{ key }}</span>
+            <span>{{ val.parentName }}</span>
           </template>
           <el-menu-item-group>
-            <template v-for="(v,key) in val">
-              <el-menu-item :index="`1-${key}`" :key="v.name">{{ v.name }}</el-menu-item>
+            <template v-for="v in val.children">
+              <el-menu-item :key="v.id" @click="getById(v.id)">{{ v.parentName }}</el-menu-item>
             </template>
           </el-menu-item-group>
         </el-submenu>
@@ -38,14 +38,31 @@
 </template>
 
 <script>
-import {mapState} from "vuex";
+import {mapState, mapActions} from "vuex";
 
 export default {
   name: "NavAside",
-  methods: {},
   computed: {
-    ...mapState('webSites', ['webSiteData', 'isCollapse'])
-  }
+    ...mapState('webSites', ['isCollapse', 'asideData'])
+  },
+  mounted() {
+    this.getAside()
+  },
+  methods: {
+    ...mapActions('webSites', {
+      getAside: 'GET-aside-Data',
+      getData: 'GET-WEBSITE-DATA-BY-ID'
+    }),
+
+    // 传入子类id，获取数据
+    getById(id) {
+      // 判断当前路由
+      if (this.$route.path !== '/') {
+        this.$router.replace('/')
+      }
+      this.getData(id);
+    }
+  },
 }
 </script>
 

@@ -25,14 +25,13 @@
       </el-col>
     </el-row>
 
-    <template v-for="v in webSiteData">
+    <template v-for="(val,key) in webSiteData">
       <el-row
           :gutter="20"
-          v-for="(val) in v"
           :key="val.name"
       >
-        <h4>{{ val.name }}</h4>
-        <el-col :span="4" v-for="val1 in val.sites" :key="val1.title" style="padding: 10px">
+        <h4>{{ key }}</h4>
+        <el-col :span="4" v-for="val1 in val" :key="val1.title" style="padding: 10px">
 
           <el-tooltip
               class="item"
@@ -64,7 +63,7 @@
 </template>
 
 <script>
-import {mapState, mapMutations} from 'vuex';
+import {mapState, mapActions} from 'vuex';
 
 export default {
   name: "NavMain",
@@ -76,14 +75,15 @@ export default {
   },
 
   mounted() {
-    this.getWebsites();
+    this.getData(1);
   },
   computed: {
-    ...mapState('webSites', ['webSiteData'])
-
+    ...mapState('webSites', ['asideData', 'webSiteData'])
   },
   methods: {
-    ...mapMutations('webSites', {getWebsites: 'GET-SITES'}),
+    ...mapActions('webSites', {
+      getData: 'GET-WEBSITE-DATA-BY-ID'
+    }),
     // 打开url
     openUrl(url) {
       window.open(url)
@@ -157,7 +157,7 @@ strong {
   transition: all 0.3s ease;
 }
 
-.tooltip{
+.tooltip {
   width: 200px;
 }
 

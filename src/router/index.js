@@ -47,7 +47,6 @@ const routes = [
                 name: 'login',
                 component: NavLogin
             },
-
         ]
     },
     {
