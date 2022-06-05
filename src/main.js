@@ -26,12 +26,15 @@ Vue.use(Meta)
 router.beforeEach((to, from, next) => {
     // 通过 requiresAuth 判断当前路由是否需要登录
     if (to.meta.isAuth) {
-        if (store.state.isToken.loginStatus) {
-            // 放行
-            next()
-        } else {
-            next({path: '/',});
-        }
+        // 执行token验证
+        store.dispatch("isToken/VERIFY-LOGIN-STATUS").then(r => {
+            if (r) {
+                // 放行
+                next()
+            } else {
+                next({path: '/login',});
+            }
+        });
 
     } else {
         next()

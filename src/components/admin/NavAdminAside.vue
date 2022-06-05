@@ -19,10 +19,17 @@
         <el-menu-item :index="{name:'sortManage'}">分类信息管理</el-menu-item>
       </el-submenu>
 
-      <el-menu-item index="2">
-        <i class="el-icon-menu"></i>
-        <span slot="title">导航二</span>
-      </el-menu-item>
+      <el-submenu index="">
+        <template slot="title">
+          <i class="el-icon-location"></i>
+          <span slot="title">系统设置</span>
+        </template>
+        <el-menu-item index="2">
+          <i class="el-icon-menu"></i>
+          <span slot="title">导航二</span>
+        </el-menu-item>
+      </el-submenu>
+
 
       <el-menu-item index="3">
         <i class="el-icon-setting"></i>

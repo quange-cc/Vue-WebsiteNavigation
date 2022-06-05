@@ -22,6 +22,17 @@
         <el-menu-item index="2-2">选项2</el-menu-item>
         <el-menu-item index="2-3">选项3</el-menu-item>
       </el-submenu>
+
+
+      <el-submenu index="12" style="float: right">
+        <template slot="title">
+          <el-avatar :size="30" src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"></el-avatar>
+          admin
+        </template>
+        <el-menu-item index="2-1">个人中心</el-menu-item>
+        <el-menu-item index="2-3">退出登录</el-menu-item>
+      </el-submenu>
+
     </el-menu>
 
   </el-header>
@@ -45,4 +56,5 @@ export default {
 </script>
 
 <style scoped>
+
 </style>

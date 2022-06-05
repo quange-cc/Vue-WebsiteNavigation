@@ -30,7 +30,10 @@
           :gutter="20"
           :key="val.name"
       >
-        <h4>{{ key }}</h4>
+        <el-col>
+          <h3><i class="el-icon-collection-tag"></i>&nbsp;{{ key }}</h3>
+        </el-col>
+
         <el-col :span="4" v-for="val1 in val" :key="val1.title" style="padding: 10px">
 
           <el-tooltip

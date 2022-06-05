@@ -16,7 +16,7 @@
       <template v-for="val in asideData">
         <el-submenu :index="`${val.id}`" :key="val.id">
           <template slot="title">
-            <i class="el-icon-location"></i>
+            <i class="el-icon-price-tag"></i>
             <span>{{ val.parentName }}</span>
           </template>
           <el-menu-item-group>
@@ -28,7 +28,7 @@
       </template>
 
       <el-menu-item index="/about">
-        <i class="el-icon-setting"></i>
+        <i class="el-icon-info"></i>
         <span slot="title">关于</span>
       </el-menu-item>
 

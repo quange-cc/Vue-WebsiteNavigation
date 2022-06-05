@@ -203,18 +203,18 @@ const isToken = {
     },
     actions: {
         'VERIFY-LOGIN-STATUS'(context) {
-            // 判断token是否存在,发送请求对token进行验证是否有效
-            if (Vue.$cookies.isKey('token')) {
-                Vue.axios.get('/api/validateToken').then(resp => {
-                    if (resp.data.code === 7000) {
-                        context.commit('CHANGE-LOGIN-STATUS', true)
-                    } else {
-                        context.commit('CHANGE-LOGIN-STATUS', false)
-                    }
-                });
-            } else {
-                context.commit('CHANGE-LOGIN-STATUS', false);
-            }
+            return new Promise((resolve) => {
+                // 判断token是否存在,发送请求对token进行验证是否有效
+                if (Vue.$cookies.isKey('token')) {
+                    Vue.axios.get('/api/validateToken').then(resp => {
+                        context.commit('CHANGE-LOGIN-STATUS', resp.data.code === 7000)
+                        resolve(resp.data.code === 7000);
+                    });
+                } else {
+                    context.commit('CHANGE-LOGIN-STATUS', false)
+                    resolve(false);
+                }
+            });
         },
     },
 }
