@@ -17,6 +17,13 @@
         首页
       </el-menu-item>
 
+
+      <el-menu-item style="float: right">
+          <a href="https://github.com/quange-cc/Vue-WebsiteNavigation">
+            <img src="@/assets/github.png" alt="github" style="width: 25px;height: 25px">
+          </a>
+      </el-menu-item>
+
       <el-menu-item index="login" style="float: right" v-show="!loginStatus">
         登录
       </el-menu-item>
@@ -25,10 +32,10 @@
         后台管理
       </el-menu-item>
 
+
     </el-menu>
 
   </el-header>
-
 
 </template>
 
