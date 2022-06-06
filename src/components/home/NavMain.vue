@@ -1,5 +1,6 @@
 <template>
-  <el-main style="background-color: #979898">
+  <el-main :style="backStyle">
+
     <el-row type="flex" justify="center">
       <el-col :span="6">
         <div style="margin-top: 15px;">
@@ -62,6 +63,8 @@
     </template>
 
     <el-backtop target=".el-main" :bottom="100"></el-backtop>
+
+
   </el-main>
 </template>
 
@@ -81,7 +84,7 @@ export default {
     this.getData(1);
   },
   computed: {
-    ...mapState('webSites', ['asideData', 'webSiteData'])
+    ...mapState('webSites', ['asideData', 'webSiteData','backStyle'])
   },
   methods: {
     ...mapActions('webSites', {

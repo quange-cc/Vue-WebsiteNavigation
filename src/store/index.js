@@ -11,6 +11,8 @@ const webSites = {
     state: {
         webSiteData: [],
         asideData: [],
+        backgroundStyle: [],
+        backStyle: 'background-image: linear-gradient(to right, #74ebd5 0%, #9face6 100%);',
         isCollapse: false
     },
 
@@ -19,6 +21,9 @@ const webSites = {
         // 边栏收起打开
         'switch-sidebar'(state) {
             state.isCollapse = !state.isCollapse;
+        },
+        'CHANGE-STYLE'(state, css) {
+            state.backStyle = css
         }
     },
 
@@ -37,6 +42,14 @@ const webSites = {
             Vue.axios.get('/api/getWebSitesById?id=' + id).then(resp => {
                 if (resp.data.code === 2004) {
                     context.state.webSiteData = resp.data.data;
+                }
+            });
+        },
+        // 获取样式列表
+        'GET-STYLE-LIST'(context) {
+            Vue.axios.get('/api/getBackgroundStyle').then(resp => {
+                if (resp.data.code === 2004) {
+                    context.state.backgroundStyle = resp.data.data;
                 }
             });
         }
@@ -197,6 +210,7 @@ const isToken = {
         loginStatus: false,
     },
     mutations: {
+        // 修改登录状态
         'CHANGE-LOGIN-STATUS'(state, status) {
             state.loginStatus = status;
         }

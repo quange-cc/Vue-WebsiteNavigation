@@ -14,6 +14,16 @@ import VueAxios from "vue-axios";
 // 设置axios 请求允许携带cookies
 axios.defaults.withCredentials = true;
 axios.defaults.baseURL = '//127.0.0.1:8081/'
+axios.interceptors.response.use(resp => {
+    const code = resp.data.code;
+    if (code === 7404) {
+        ElementUI.Message.success('请求成功！')
+    }
+    return resp
+}, error => {
+    return Promise.reject(error)
+});
+
 
 Vue.use(VueAxios, axios);
 Vue.config.productionTip = false

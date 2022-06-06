@@ -17,11 +17,14 @@
         首页
       </el-menu-item>
 
+      <el-menu-item @click="drawer = true">
+        更换样式
+      </el-menu-item>
 
       <el-menu-item style="float: right">
-          <a href="https://github.com/quange-cc/Vue-WebsiteNavigation">
-            <img src="@/assets/github.png" alt="github" style="width: 25px;height: 25px">
-          </a>
+        <a href="https://github.com/quange-cc/Vue-WebsiteNavigation">
+          <img src="@/assets/github.png" alt="github" style="width: 25px;height: 25px">
+        </a>
       </el-menu-item>
 
       <el-menu-item index="login" style="float: right" v-show="!loginStatus">
@@ -32,29 +35,63 @@
         后台管理
       </el-menu-item>
 
-
     </el-menu>
+
+    <el-drawer
+        title="背景图修改"
+        :visible.sync="drawer"
+        :with-header="true">
+      <el-row :gutter="10">
+        <template v-for="val in backgroundStyle">
+          <el-col :span="12" :key="val.name">
+            <el-card class="box-card">
+              <div slot="header" class="clearfix">
+                <span>{{ val.name }}</span>
+                <el-button style="float: right; padding: 3px 0" type="text"
+                           @click="changeStyle(val.style)">
+                  设置样式
+                </el-button>
+              </div>
+              <div class="text item"
+                   :style="`height: 100px; ${val.style}`">
+              </div>
+            </el-card>
+          </el-col>
+        </template>
+      </el-row>
+
+
+    </el-drawer>
 
   </el-header>
 
 </template>
 
 <script>
-import {mapMutations, mapState} from "vuex";
+import {mapMutations, mapState, mapActions} from "vuex";
 
 export default {
   name: "NavHeader",
+  data() {
+    return {
+      drawer: false,
+    }
+  },
   mounted() {
+    this.getStyleList();
   },
   computed: {
-    ...mapState('webSites', ['isCollapse']),
+    ...mapState('webSites', ['isCollapse', 'backgroundStyle']),
     ...mapState('isToken', ['loginStatus'])
   },
   methods: {
     ...mapMutations('webSites', {
-      openSidebar: 'switch-sidebar'
+      openSidebar: 'switch-sidebar',
+      changeStyle: 'CHANGE-STYLE'
     }),
-
+    ...mapActions('webSites', {
+      getStyleList: 'GET-STYLE-LIST'
+    }),
   }
 };
 </script>
