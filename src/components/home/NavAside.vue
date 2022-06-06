@@ -3,12 +3,11 @@
 
     <el-menu
         class="el-menu-vertical-demo"
-        :background-color="color1"
+        background-color="#545c63"
         text-color="#fff"
         :collapse-transition="false"
         :collapse="isCollapse"
-        :router="true"
-    >
+        :router="true">
       <el-menu-item index="/" v-show="isCollapse">
         <i class="el-icon-s-home"></i>
       </el-menu-item>
@@ -18,7 +17,6 @@
           <img src="@/assets/logo.png" style="width: 150px;height: 50px" alt="logo">
         </i>
       </el-menu-item>
-
 
       <template v-for="val in asideData">
         <el-submenu :index="`${val.id}`" :key="val.id">
@@ -48,11 +46,6 @@ import {mapState, mapActions} from "vuex";
 
 export default {
   name: "NavAside",
-  data(){
-    return{
-      color1: '#545c63'
-    }
-  },
   computed: {
     ...mapState('webSites', ['isCollapse', 'asideData'])
   },

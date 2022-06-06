@@ -1,25 +1,24 @@
 <template>
-  <el-aside  :width="isCollapse ? '65px':'200px'">
+  <el-aside :width="isCollapse ? '65px':'200px'">
 
     <el-menu
         :default-active="$route.path"
         class="el-menu-vertical"
-        @open="handleOpen"
-        @close="handleClose"
         :collapse-transition="false"
         :router="true"
         :collapse="isCollapse">
 
-      <el-submenu index="1">
+      <el-submenu index="11">
         <template slot="title">
           <i class="el-icon-location"></i>
           <span slot="title">信息管理</span>
         </template>
-        <el-menu-item :index="{name:'wsm'}">网址信息管</el-menu-item>
         <el-menu-item :index="{name:'sortManage'}">分类信息管理</el-menu-item>
+        <el-menu-item :index="{name:'wsm'}">网址信息管理</el-menu-item>
+        <el-menu-item :index="{name:'styleManage'}">样式信息管理</el-menu-item>
       </el-submenu>
 
-      <el-submenu index="">
+      <el-submenu index="4">
         <template slot="title">
           <i class="el-icon-location"></i>
           <span slot="title">系统设置</span>
@@ -52,19 +51,12 @@ export default {
     ...mapState('layoutData', ['isCollapse'])
   },
 
-  methods: {
-    handleOpen(key, keyPath) {
-      console.log(key, keyPath);
-    },
-    handleClose(key, keyPath) {
-      console.log(key, keyPath);
-    }
-  }
+  methods: {}
 }
 </script>
 
 <style scoped>
-.el-menu-vertical{
+.el-menu-vertical {
   height: 100vh;
 }
 </style>

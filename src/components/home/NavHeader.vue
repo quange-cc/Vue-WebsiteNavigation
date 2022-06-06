@@ -37,14 +37,17 @@
 
     </el-menu>
 
+
+<!--  样式修改抽屉 -->
     <el-drawer
-        title="背景图修改"
+        title="样式修改"
         :visible.sync="drawer"
+        size='25%'
         :with-header="true">
       <el-row :gutter="10">
         <template v-for="val in backgroundStyle">
-          <el-col :span="12" :key="val.name">
-            <el-card class="box-card">
+          <el-col :span="12" :key="val.name" style="padding: 10px">
+            <el-card class="box-card" shadow="hover">
               <div slot="header" class="clearfix">
                 <span>{{ val.name }}</span>
                 <el-button style="float: right; padding: 3px 0" type="text"
@@ -59,8 +62,6 @@
           </el-col>
         </template>
       </el-row>
-
-
     </el-drawer>
 
   </el-header>

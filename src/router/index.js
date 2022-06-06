@@ -10,6 +10,7 @@ import NavAdminHome from "@/components/admin/NavAdminHome";
 import SortManage from "@/components/admin/pages/SortManage";
 import NavMain from "@/components/home/NavMain";
 import NavAbout from "@/components/home/pages/NavAbout";
+import StyleManage from "@/components/admin/pages/StyleManage";
 
 Vue.use(VueRouter)
 
@@ -80,6 +81,14 @@ const routes = [
                     isAuth: true
                 }
             },
+            {
+                path: 'style-manage',
+                name: 'styleManage',
+                component: StyleManage,
+                meta: {
+                    isAuth: true
+                }
+            }
         ]
     },
     {

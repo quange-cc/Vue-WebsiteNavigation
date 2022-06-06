@@ -17,7 +17,7 @@ axios.defaults.baseURL = '//127.0.0.1:8081/'
 axios.interceptors.response.use(resp => {
     const code = resp.data.code;
     if (code === 7404) {
-        ElementUI.Message.success('请求成功！')
+        ElementUI.Message.success('token失效!')
     }
     return resp
 }, error => {
