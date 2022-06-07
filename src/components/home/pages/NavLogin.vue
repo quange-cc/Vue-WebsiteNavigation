@@ -1,14 +1,15 @@
 <template>
 
   <el-main>
-    <el-row type="flex" justify="center" style="padding: 200px">
-
-      <el-col :span="5">
+    <el-row justify="center" type="flex">
+      <el-col
+          :xs="24"
+          :xl="10"
+          style="padding: 200px" >
         <el-card class="box-card">
           <div slot="header" class="clearfix">
             <span>管理员登录</span>
           </div>
-
           <!--登录表单区域-->
           <el-form
               :model="loginForm"
@@ -34,7 +35,6 @@
             </el-form-item>
           </el-form>
         </el-card>
-
       </el-col>
     </el-row>
   </el-main>

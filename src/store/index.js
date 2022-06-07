@@ -37,9 +37,17 @@ const webSites = {
                 }
             });
         },
-        // 获取首页数据
+        // 获取网址数据
         'GET-WEBSITE-DATA-BY-ID'(context, id) {
             Vue.axios.get('/api/getWebSitesById?id=' + id).then(resp => {
+                if (resp.data.code === 2004) {
+                    context.state.webSiteData = resp.data.data;
+                }
+            });
+        },
+        // 获取网址数据
+        'GET-WEBSITE-DATA'(context) {
+            Vue.axios.get('/api/sites').then(resp => {
                 if (resp.data.code === 2004) {
                     context.state.webSiteData = resp.data.data;
                 }
@@ -137,7 +145,7 @@ const adminWebSites = {
                     // 清空表单
                     Data.refs.resetFields()
                     // 重新获取数据
-                    context.dispatch('GET-WEB-SITES-DATA')
+                    context.dispatch('GET-WEB-SITES-DATA', {page: 1, size: 10})
                 } else {
                     this._vm.$message.error('添加失败')
                 }

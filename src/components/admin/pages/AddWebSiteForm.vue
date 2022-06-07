@@ -75,7 +75,7 @@ export default {
       deep: true,
       handler(id) {
         // 当值被改变时进行获取子分类的信息
-        this.axios.get('http://127.0.0.1:8081/api/getAllSub?id=' + id).then(resp => {
+        this.axios.get('api/getAllSub?id=' + id).then(resp => {
           if (resp.data.code === 2004) {
             this.sortData = resp.data.data;
           }

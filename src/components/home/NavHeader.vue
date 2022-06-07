@@ -46,7 +46,14 @@
         :with-header="true">
       <el-row :gutter="10">
         <template v-for="val in backgroundStyle">
-          <el-col :span="12" :key="val.name" style="padding: 10px">
+          <el-col
+              :xs="24"
+              :sm:="24"
+              :md:="24"
+              :lg="24"
+              :xl="12"
+              :key="val.name"
+              style="padding: 10px">
             <el-card class="box-card" shadow="hover">
               <div slot="header" class="clearfix">
                 <span>{{ val.name }}</span>

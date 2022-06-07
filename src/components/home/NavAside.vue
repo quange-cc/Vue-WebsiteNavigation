@@ -3,8 +3,7 @@
 
     <el-menu
         class="el-menu-vertical-demo"
-        background-color="#545c63"
-        text-color="#fff"
+
         :collapse-transition="false"
         :collapse="isCollapse"
         :router="true">

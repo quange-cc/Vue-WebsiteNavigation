@@ -98,14 +98,14 @@ export default {
   methods: {
     // 获取所有分类信息
     getSortData() {
-      this.axios.get('http://127.0.0.1:8081/api/getCategoryAll').then(resp => {
+      this.axios.get('api/getCategoryAll').then(resp => {
         this.sortData = resp.data.data
       });
     },
 
     // 获取主分类信息
     getParentData() {
-      this.axios.get('http://127.0.0.1:8081/api/getAllParent').then(resp => {
+      this.axios.get('api/getAllParent').then(resp => {
         if (resp.data.code === 2004) {
           this.parentData = resp.data.data;
         }
@@ -119,7 +119,7 @@ export default {
         cancelButtonText: '取消',
       }).then(({value}) => {
         // 发送添加请求
-        this.axios.post('http://127.0.0.1:8081/api/addParentData', value).then(resp => {
+        this.axios.post('api/addParentData', value).then(resp => {
           if (resp.data.code === 2001) {
             this.$message.success('添加成功')
             this.getSortData();
@@ -143,7 +143,7 @@ export default {
       }).then(() => {
         if (row.tag === 1) {
           // 发送请求删除主分类
-          this.axios.get('http://127.0.0.1:8081/api/delParent?id=' + row.id).then(resp => {
+          this.axios.get('api/delParent?id=' + row.id).then(resp => {
             if (resp.data.code === 2002) {
               this.$message.success('删除成功')
               this.getSortData();
@@ -156,7 +156,7 @@ export default {
         }
         // 删除子分类
         if (row.tag === 2) {
-          this.axios.get('http://127.0.0.1:8081/api/delSubData?id=' + row.id).then(resp => {
+          this.axios.get('api/delSubData?id=' + row.id).then(resp => {
             if (resp.data.code === 2002) {
               this.$message.success('删除成功')
               this.getSortData();
@@ -188,7 +188,7 @@ export default {
         }).then(({value}) => {
           //发送修改数据请求
           const parentData = {id: row.id, name: value}
-          this.axios.post('http://127.0.0.1:8081/api/updateParent', parentData).then(resp => {
+          this.axios.post('api/updateParent', parentData).then(resp => {
             if (resp.data.code === 2003) {
               this.$message.success('修改成功')
               this.getSortData()
@@ -207,7 +207,7 @@ export default {
           inputValue: row.parentName
         }).then(({value}) => {
           const sortData = {id: row.id, name: value}
-          this.axios.post('http://127.0.0.1:8081/api/updateSubSort', sortData).then(resp => {
+          this.axios.post('api/updateSubSort', sortData).then(resp => {
             if (resp.data.code === 2003) {
               this.$message.success('修改成功')
               this.getSortData()
@@ -231,7 +231,7 @@ export default {
     // 添加子分类信息
     addSubSort(sortForm) {
       // 发送添加子分类请求
-      this.axios.post('http://127.0.0.1:8081/api/addSubData', sortForm).then(resp => {
+      this.axios.post('api/addSubData', sortForm).then(resp => {
         if (resp.data.code === 2001) {
           this.$message.success('添加成功')
           // 重新获取所有分类信息

@@ -27,10 +27,8 @@
           fixed="right"
           label="操作">
         <template v-slot="scope">
-          <el-button type="text" size="small">编辑</el-button>
           <el-button type="text" size="small" @click="delStyle(scope.row)">删除</el-button>
         </template>
-
       </el-table-column>
     </el-table>
 

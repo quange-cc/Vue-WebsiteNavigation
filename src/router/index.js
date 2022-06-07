@@ -11,6 +11,7 @@ import SortManage from "@/components/admin/pages/SortManage";
 import NavMain from "@/components/home/NavMain";
 import NavAbout from "@/components/home/pages/NavAbout";
 import StyleManage from "@/components/admin/pages/StyleManage";
+import personalCenter from "@/components/admin/pages/PersonalCenter";
 
 Vue.use(VueRouter)
 
@@ -85,6 +86,14 @@ const routes = [
                 path: 'style-manage',
                 name: 'styleManage',
                 component: StyleManage,
+                meta: {
+                    isAuth: true
+                }
+            },
+            {
+                path: 'personal-center',
+                name: 'personalCenter',
+                component: personalCenter,
                 meta: {
                     isAuth: true
                 }

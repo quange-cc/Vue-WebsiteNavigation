@@ -1,8 +1,14 @@
 <template>
   <el-main :style="backStyle">
 
-    <el-row type="flex" justify="center">
-      <el-col :span="6">
+    <el-row type="flex" justify="center" class="hidden-xs-only">
+      <el-col
+          :xs="12"
+          :sm="8"
+          :md="6"
+          :lg="5"
+          :xl="4"
+      >
         <div style="margin-top: 15px;">
           <el-input
               placeholder="请输入搜索内容"
@@ -15,8 +21,14 @@
       </el-col>
     </el-row>
 
-    <el-row type="flex" justify="center">
-      <el-col :span="6">
+    <el-row type="flex" justify="center" class="hidden-xs-only">
+      <el-col
+          :xs="12"
+          :sm="8"
+          :md="6"
+          :lg="5"
+          :xl="4"
+      >
         <el-radio-group v-model="searchId" size="small" style="margin-top: 2px;">
           <el-radio-button label='1'>谷歌</el-radio-button>
           <el-radio-button label='2'>百度</el-radio-button>
@@ -35,7 +47,15 @@
           <h3><i class="el-icon-collection-tag"></i>&nbsp;{{ key }}</h3>
         </el-col>
 
-        <el-col :span="4" v-for="val1 in val" :key="val1.title" style="padding: 10px">
+        <el-col
+            :xs="12"
+            :sm="8"
+            :md="6"
+            :lg="5"
+            :xl="4"
+            v-for="val1 in val"
+            :key="val1.title"
+            style="padding: 10px">
 
           <el-tooltip
               class="item"
@@ -70,7 +90,7 @@
 
 <script>
 import {mapState, mapActions} from 'vuex';
-
+import 'element-ui/lib/theme-chalk/display.css';
 export default {
   name: "NavMain",
   data() {
@@ -81,14 +101,14 @@ export default {
   },
 
   mounted() {
-    this.getData(1);
+    this.getData()
   },
   computed: {
-    ...mapState('webSites', ['asideData', 'webSiteData','backStyle'])
+    ...mapState('webSites', ['asideData', 'webSiteData', 'backStyle'])
   },
   methods: {
     ...mapActions('webSites', {
-      getData: 'GET-WEBSITE-DATA-BY-ID'
+      getData: 'GET-WEBSITE-DATA'
     }),
     // 打开url
     openUrl(url) {
