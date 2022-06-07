@@ -15,7 +15,6 @@
 
       <el-menu-item index="/">前台</el-menu-item>
 
-
       <el-submenu index="123">
         <template slot="title">我的工作台</template>
         <el-menu-item index="2-1">选项1</el-menu-item>
@@ -30,7 +29,7 @@
           admin
         </template>
         <el-menu-item :index="{name:'personalCenter'}">个人中心</el-menu-item>
-        <el-menu-item index="2-3">退出登录</el-menu-item>
+        <el-menu-item @click="quitLogin">退出登录</el-menu-item>
       </el-submenu>
 
     </el-menu>
@@ -51,6 +50,10 @@ export default {
       openSidebar: 'switch-sidebar'
     }),
 
+    quitLogin() {
+      this.$cookies.remove('token');
+      this.$router.push('/login')
+    }
   }
 }
 </script>

@@ -22,7 +22,7 @@
             </el-form-item>
 
             <el-form-item>
-              <el-button type="primary" @click="changePasswd('ruleForm')">修改</el-button>
+              <el-button type="primary" @click="changePasswd(passwdForm)">修改</el-button>
             </el-form-item>
           </el-form>
 
@@ -36,14 +36,29 @@
 export default {
   name: "PersonalCenter",
   data() {
-    const validatePass = (rule, value, callback) => {
+
+    const validateOldPass = (rule, value, callback) => {
       if (value === '') {
         callback(new Error('请输入旧密码'));
+      }
+      callback();
+    };
+
+    const validateNewPass = (rule, value, callback) => {
+      if (value === '') {
+        callback(new Error('请输入新密码'));
+      }
+      callback();
+    };
+
+    const validateCheckPass = (rule, value, callback) => {
+      if (value === '') {
+        callback(new Error('请输入新密码'));
       } else {
-        if (this.rules.newPasswd !== '') {
-          this.$refs.passwdForm.validateField('checkPasswd');
+        if (value === this.passwdForm.newPasswd) {
+          callback();
         }
-        callback();
+        callback(new Error('两次密码不一致'));
       }
     };
 
@@ -51,10 +66,13 @@ export default {
       passwdForm: {
         oldPasswd: '',
         newPasswd: '',
-        checkPasswd: ''
+        checkPasswd: '',
+        token: this.$cookies.get("token"),
       },
       rules: {
-        oldPasswd: [{validator: validatePass, trigger: 'blur'}]
+        oldPasswd: [{validator: validateOldPass, trigger: 'blur'}],
+        newPasswd: [{validator: validateNewPass, trigger: 'blur'}],
+        checkPasswd: [{validator: validateCheckPass, trigger: 'blur'}]
       }
     }
 
@@ -63,7 +81,23 @@ export default {
   methods: {
 
     // 修改密码
-    changePasswd() {
+    changePasswd(passwdForm) {
+      this.$refs.passwdForm.validate((valid) => {
+        if (valid) {
+          // 发送修改请求
+          this.axios.post('api/updatePasswd', passwdForm).then(resp => {
+            if (resp.data.code === 2003) {
+              this.$message.success('密码修改成功!')
+              this.$refs.passwdForm.resetFields();
+            } else {
+              this.$message.error('密码修改失败！')
+            }
+          });
+        } else {
+          return false
+        }
+      });
+
 
     }
   }

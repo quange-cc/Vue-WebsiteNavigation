@@ -1,5 +1,5 @@
 <template>
-  <el-aside :width="isCollapse ? '64px':'200px'">
+  <el-aside :width="isCollapse ? '64px':'200px'" class="hidden-xs-only">
 
     <el-menu
         class="el-menu-vertical-demo"
@@ -42,7 +42,7 @@
 
 <script>
 import {mapState, mapActions} from "vuex";
-
+import 'element-ui/lib/theme-chalk/display.css';
 export default {
   name: "NavAside",
   computed: {
