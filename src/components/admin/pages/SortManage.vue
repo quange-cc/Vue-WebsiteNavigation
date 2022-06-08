@@ -129,8 +129,6 @@ export default {
         }).catch((error) => {
           this.$message.error('添加错误' + error)
         })
-      }).catch(() => {
-        this.$message.info('取消添加')
       });
     },
 

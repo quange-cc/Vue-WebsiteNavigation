@@ -4,6 +4,7 @@
       :visible.sync="addWebSiteFormVisible"
       width="30%"
       :before-close="closeForm"
+      :close-on-click-modal="false"
   >
 
     <!--添加网站数据表单区域-->

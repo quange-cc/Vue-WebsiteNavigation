@@ -1,6 +1,5 @@
 <template>
   <el-main :style="backStyle">
-
     <el-row type="flex" justify="center" class="hidden-xs-only">
       <el-col
           :xs="12"
@@ -40,7 +39,6 @@
 
     <template v-for="(val,key) in webSiteData">
       <el-row
-          :gutter="20"
           :key="val.name"
       >
         <el-col>
@@ -51,7 +49,7 @@
             :xs="12"
             :sm="8"
             :md="6"
-            :lg="5"
+            :lg="4"
             :xl="4"
             v-for="val1 in val"
             :key="val1.title"
@@ -83,8 +81,6 @@
     </template>
 
     <el-backtop target=".el-main" :bottom="100"></el-backtop>
-
-
   </el-main>
 </template>
 
@@ -154,6 +150,9 @@ strong {
 .comment {
   margin-left: 60px;
   margin-top: 6px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 .comment p {

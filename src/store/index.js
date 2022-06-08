@@ -12,7 +12,7 @@ const webSites = {
         webSiteData: [],
         asideData: [],
         backgroundStyle: [],
-        backStyle: 'background-image: linear-gradient(to right, #74ebd5 0%, #9face6 100%);',
+        backStyle: 'background-image: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);',
         isCollapse: false
     },
 

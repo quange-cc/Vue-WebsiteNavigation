@@ -13,7 +13,7 @@
         <i class="el-icon-s-unfold" v-show="isCollapse"></i>
       </el-menu-item>
 
-      <el-menu-item index="/">
+      <el-menu-item index="/" @click="getData">
         首页
       </el-menu-item>
 
@@ -38,7 +38,7 @@
     </el-menu>
 
 
-<!--  样式修改抽屉 -->
+    <!--  样式修改抽屉 -->
     <el-drawer
         title="样式修改"
         :visible.sync="drawer"
@@ -98,7 +98,8 @@ export default {
       changeStyle: 'CHANGE-STYLE'
     }),
     ...mapActions('webSites', {
-      getStyleList: 'GET-STYLE-LIST'
+      getStyleList: 'GET-STYLE-LIST',
+      getData: 'GET-WEBSITE-DATA',
     }),
   }
 };
