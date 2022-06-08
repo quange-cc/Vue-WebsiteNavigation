@@ -3,7 +3,6 @@
 
     <el-menu
         class="el-menu-vertical-demo"
-
         :collapse-transition="false"
         :collapse="isCollapse"
         :router="true">
@@ -18,14 +17,14 @@
       </el-menu-item>
 
       <template v-for="val in asideData">
-        <el-submenu :index="`${val.id}`" :key="val.id">
+        <el-submenu :key="val.parentName" :index="val.id">
           <template slot="title">
             <i class="el-icon-price-tag"></i>
             <span>{{ val.parentName }}</span>
           </template>
           <el-menu-item-group>
             <template v-for="v in val.children">
-              <el-menu-item :key="v.id" @click="getById(v.id)">{{ v.parentName }}</el-menu-item>
+              <el-menu-item :key="v.parentName" @click="getById(v.id)" index="1">{{ v.parentName }}</el-menu-item>
             </template>
           </el-menu-item-group>
         </el-submenu>
@@ -43,6 +42,7 @@
 <script>
 import {mapState, mapActions} from "vuex";
 import 'element-ui/lib/theme-chalk/display.css';
+
 export default {
   name: "NavAside",
   computed: {
@@ -74,4 +74,5 @@ export default {
   height: 100vh;
   border-right: hidden;
 }
+
 </style>
