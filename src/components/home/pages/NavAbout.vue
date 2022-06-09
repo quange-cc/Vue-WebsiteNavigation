@@ -1,6 +1,6 @@
 <template>
 
-  <el-main>
+  <el-main :style="backStyle">
     <h2>关于</h2>
     <p>
       通过学习，一点点完善功能
@@ -9,8 +9,13 @@
 </template>
 
 <script>
+import {mapState} from "vuex";
+
 export default {
-  name: "NavAbout"
+  name: "NavAbout",
+  computed: {
+    ...mapState('webSites', ['backStyle'])
+  }
 }
 </script>
 
