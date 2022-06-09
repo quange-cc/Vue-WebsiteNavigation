@@ -12,6 +12,8 @@ import NavMain from "@/components/home/NavMain";
 import NavAbout from "@/components/home/pages/NavAbout";
 import StyleManage from "@/components/admin/pages/StyleManage";
 import personalCenter from "@/components/admin/pages/PersonalCenter";
+import HotNews from "@/components/home/pages/HotNews";
+
 
 Vue.use(VueRouter)
 
@@ -39,6 +41,18 @@ const routes = [
                 meta: {
                     metaInfo: {
                         title: '网址导航-关于',
+                        keywords: '导航',
+                        description: '最全的导航'
+                    }
+                }
+            },
+            {
+                path: 'hotNews',
+                name: 'hotNews',
+                component: HotNews,
+                meta: {
+                    metaInfo: {
+                        title: '网址导航-热榜',
                         keywords: '导航',
                         description: '最全的导航'
                     }
