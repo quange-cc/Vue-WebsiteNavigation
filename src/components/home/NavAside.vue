@@ -30,11 +30,6 @@
         </el-submenu>
       </template>
 
-      <el-menu-item index="/videoAnalysis">
-        <i class="el-icon-info"></i>
-        <span slot="title">ViP视频解析</span>
-      </el-menu-item>
-
       <el-menu-item index="/about">
         <i class="el-icon-info"></i>
         <span slot="title">关于</span>
