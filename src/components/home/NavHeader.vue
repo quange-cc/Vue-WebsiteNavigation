@@ -17,6 +17,15 @@
         首页
       </el-menu-item>
 
+
+      <el-menu-item index="/hotNews">
+        热搜榜
+      </el-menu-item>
+      <el-menu-item index="/zhiHuHotNews">
+        知乎热搜榜
+      </el-menu-item>
+
+
       <el-menu-item @click="drawer = true">
         更换样式
       </el-menu-item>

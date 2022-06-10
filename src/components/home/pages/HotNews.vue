@@ -1,6 +1,6 @@
 <template>
   <el-main :style="backStyle">
-    <el-row>
+    <el-row :gutter="20">
       <el-col :span="12">
         <el-card class="box-card">
           <div slot="header" class="clearfix">
@@ -15,6 +15,22 @@
           </ul>
         </el-card>
       </el-col>
+
+      <el-col :span="12">
+        <el-card class="box-card">
+          <div slot="header" class="clearfix">
+            <span>掘金热门</span>
+          </div>
+          <ul>
+            <li :key="val.id" v-for="val in jueJinHotList">
+              <a :href="`https://juejin.cn/post/ ${val.article}`">
+                <p>{{ val.title }}</p>
+              </a>
+            </li>
+          </ul>
+        </el-card>
+      </el-col>
+
     </el-row>
 
   </el-main>
@@ -28,11 +44,13 @@ export default {
   name: "HotNews",
   data() {
     return {
-      poJieHotList: []
+      poJieHotList: [],
+      jueJinHotList: []
     }
   },
   mounted() {
     this.getPoJieHotList();
+    this.getJueJinHotList();
   },
   computed: {
     ...mapState('webSites', ['backStyle'])
@@ -46,6 +64,14 @@ export default {
         }
       });
     },
+
+    getJueJinHotList() {
+      axios.get('api/reception/JueJinHotList').then(resp => {
+        if (resp.data.code === 2004) {
+          this.jueJinHotList = resp.data.data;
+        }
+      });
+    }
   }
 }
 </script>
