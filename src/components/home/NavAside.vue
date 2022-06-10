@@ -30,9 +30,14 @@
         </el-submenu>
       </template>
 
-      <el-menu-item index="/hotNews">
-        <i class="el-icon-info"></i>
+      <el-menu-item index="/zhiHuHotNews">
+        <i class="el-icon-chat-dot-square"></i>
         <span slot="title">知乎热搜榜</span>
+      </el-menu-item>
+
+      <el-menu-item index="/hotNews">
+        <i class="el-icon-chat-dot-square"></i>
+        <span slot="title">热搜榜</span>
       </el-menu-item>
 
       <el-menu-item index="/about">

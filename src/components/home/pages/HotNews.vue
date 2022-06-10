@@ -1,33 +1,18 @@
 <template>
   <el-main :style="backStyle">
-
-    <el-row type="flex" justify="center">
-      <el-col
-          :xs="24"
-          :sm="24"
-          :md="24"
-          :lg="24"
-          :xl="15">
+    <el-row>
+      <el-col :span="12">
         <el-card class="box-card">
           <div slot="header" class="clearfix">
-            <span>知乎热榜内容</span>
+            <span>吾爱破解热门</span>
           </div>
-          <el-collapse>
-            <template v-for="val in list">
-              <el-collapse-item :name="val.id" :key="val.id">
-                <template slot="title">
-                  <h2 class="collapse_title">{{ val.title }}</h2>
-                  <el-tag type="danger">{{ val.heat }}</el-tag>
-                </template>
-                <div class="collapse_excerpt"><p>{{ val.excerpt }}</p></div>
-                <div>
-                  <a :href="`https://www.zhihu.com/question/${val.articledId}`" target="_blank">
-                    点击查看原文
-                  </a>
-                </div>
-              </el-collapse-item>
-            </template>
-          </el-collapse>
+          <ul>
+            <li :key="val.id" v-for="val in poJieHotList">
+              <a :href="`https://www.52pojie.cn/ ${val.href}`">
+                <p>{{ val.title }}</p>
+              </a>
+            </li>
+          </ul>
         </el-card>
       </el-col>
     </el-row>
@@ -36,37 +21,35 @@
 </template>
 
 <script>
-import axios from "axios";
 import {mapState} from "vuex";
+import axios from "axios";
 
 export default {
   name: "HotNews",
   data() {
     return {
-      list: [],
+      poJieHotList: []
     }
+  },
+  mounted() {
+    this.getPoJieHotList();
   },
   computed: {
     ...mapState('webSites', ['backStyle'])
   },
-  mounted() {
-    axios.get('api/getZhiHuHotList').then(resp => {
-      this.list = resp.data.data;
-    });
-
+  methods: {
+    // 获取吾爱破解数据
+    getPoJieHotList() {
+      axios.get('api/reception/PoJieHotList').then(resp => {
+        if (resp.data.code === 2004) {
+          this.poJieHotList = resp.data.data;
+        }
+      });
+    },
   }
 }
 </script>
 
 <style scoped>
-.collapse_title {
-  font-size: 15px;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
-}
 
-.collapse_excerpt {
-  font-size: 20px;
-}
 </style>
