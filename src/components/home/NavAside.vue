@@ -24,7 +24,7 @@
           </template>
           <el-menu-item-group>
             <template v-for="v in val.children">
-              <el-menu-item :key="v.parentName" @click="getById(v.id)" index="1">{{ v.parentName }}</el-menu-item>
+              <el-menu-item :key="v.parentName" @click="getById(v.id)">{{ v.parentName }}</el-menu-item>
             </template>
           </el-menu-item-group>
         </el-submenu>
