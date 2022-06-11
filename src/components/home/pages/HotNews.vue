@@ -1,10 +1,16 @@
 <template>
   <el-main :style="backStyle">
     <el-row :gutter="20">
-      <el-col :span="8">
+      <el-col
+          :xs="24"
+          :sm="24"
+          :md="12"
+          :lg="12"
+          :xl="8">
         <el-card class="box-card">
           <div slot="header" class="clearfix">
-            <span>吾爱破解热门</span>
+            <el-avatar :src="require('../../../assets/52pojie.cn.png')" :size="30"></el-avatar>
+            <span style="vertical-align: super"> 吾爱破解热门</span>
           </div>
           <div class="box-card-content">
             <ul class="card-ul">
@@ -18,10 +24,16 @@
         </el-card>
       </el-col>
 
-      <el-col :span="8">
+      <el-col
+          :xs="24"
+          :sm="24"
+          :md="12"
+          :lg="12"
+          :xl="8">
         <el-card class="box-card">
           <div slot="header" class="clearfix">
-            <span>掘金热门</span>
+            <el-avatar :src="require('../../../assets/juejin.im.png')" :size="30"></el-avatar>
+            <span style="vertical-align: super"> 掘金热门</span>
           </div>
           <div class="box-card-content">
             <ul class="card-ul">
@@ -35,10 +47,16 @@
         </el-card>
       </el-col>
 
-      <el-col :span="8">
+      <el-col
+          :xs="24"
+          :sm="24"
+          :md="12"
+          :lg="12"
+          :xl="8">
         <el-card class="box-card">
           <div slot="header" class="clearfix">
-            <span>CSDN</span>
+            <el-avatar :src="require('../../../assets/csdn.net.png')" :size="30"></el-avatar>
+            <span style="vertical-align: super"> CSDN</span>
           </div>
           <div class="box-card-content">
             <ul class="card-ul">
@@ -107,6 +125,12 @@ export default {
 </script>
 
 <style scoped>
+
+
+/*深度作用选择器*/
+.el-card /deep/ .el-card__header {
+  padding: 7px 7px;
+}
 
 /* 定义滚动条宽度*/
 .box-card-content::-webkit-scrollbar {
