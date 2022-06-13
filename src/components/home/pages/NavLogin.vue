@@ -1,11 +1,11 @@
 <template>
 
-  <el-main>
+  <el-main :style="backStyle">
     <el-row justify="center" type="flex">
       <el-col
           :xs="24"
           :xl="10"
-          style="padding: 200px" >
+          style="padding: 200px">
         <el-card class="box-card">
           <div slot="header" class="clearfix">
             <span>管理员登录</span>
@@ -43,7 +43,7 @@
 </template>
 
 <script>
-import {mapMutations} from "vuex";
+import {mapMutations, mapState} from "vuex";
 
 export default {
   name: "NavLogin",
@@ -79,7 +79,9 @@ export default {
     }
 
   },
-  computed: {},
+  computed: {
+    ...mapState('webSites', ['backStyle'])
+  },
   methods: {
     ...mapMutations('isToken', {changeStatus: 'CHANGE-LOGIN-STATUS'}),
 
