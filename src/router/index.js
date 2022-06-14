@@ -29,7 +29,7 @@ const routes = [
                 component: NavMain,
                 meta: {
                     metaInfo: {
-                        title: '网址导航',
+                        title: '网址导航-泉哥',
                         keywords: '导航',
                         description: '最全的导航'
                     }
