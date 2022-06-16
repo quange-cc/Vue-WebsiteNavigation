@@ -50,7 +50,7 @@ export default {
     ...mapState('webSites', ['backStyle'])
   },
   mounted() {
-    axios.get('api/reception/ZhiHuHotList').then(resp => {
+    axios.get('api/hotList/ZhiHuHotList').then(resp => {
       this.list = resp.data.data;
     });
 

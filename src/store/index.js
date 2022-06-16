@@ -31,7 +31,7 @@ const webSites = {
     actions: {
         // 获取左侧导航栏 信息
         'GET-aside-Data'(context) {
-            Vue.axios.get('/api/getAside').then(resp => {
+            Vue.axios.get('/api/reception/getAside').then(resp => {
                 if (resp.data.code === 2004) {
                     context.state.asideData = resp.data.data;
                 }
@@ -39,7 +39,7 @@ const webSites = {
         },
         // 获取网址数据
         'GET-WEBSITE-DATA-BY-ID'(context, id) {
-            Vue.axios.get('/api/getWebSitesById?id=' + id).then(resp => {
+            Vue.axios.get('/api/reception/getWebSitesById?id=' + id).then(resp => {
                 if (resp.data.code === 2004) {
                     context.state.webSiteData = resp.data.data;
                 }
@@ -47,7 +47,7 @@ const webSites = {
         },
         // 获取网址数据
         'GET-WEBSITE-DATA'(context) {
-            Vue.axios.get('/api/sites').then(resp => {
+            Vue.axios.get('/api/reception/sites').then(resp => {
                 if (resp.data.code === 2004) {
                     context.state.webSiteData = resp.data.data;
                 }

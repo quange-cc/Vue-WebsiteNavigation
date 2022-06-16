@@ -99,7 +99,7 @@ export default {
   methods: {
     // 获取吾爱破解数据
     getPoJieHotList() {
-      axios.get('api/reception/PoJieHotList').then(resp => {
+      axios.get('api/hotList/PoJieHotList').then(resp => {
         if (resp.data.code === 2004) {
           this.poJieHotList = resp.data.data;
         }
@@ -107,14 +107,14 @@ export default {
     },
 
     getJueJinHotList() {
-      axios.get('api/reception/JueJinHotList').then(resp => {
+      axios.get('api/hotList/JueJinHotList').then(resp => {
         if (resp.data.code === 2004) {
           this.jueJinHotList = resp.data.data;
         }
       });
     },
     getCsdnHotList() {
-      axios.get('api/reception/CsdnHotList').then(resp => {
+      axios.get('api/hotList/CsdnHotList').then(resp => {
         if (resp.data.code === 2004) {
           this.csdnHotList = resp.data.data;
         }
